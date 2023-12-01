@@ -14,17 +14,17 @@ function SignUpPage({ navigation }) {
 
     const roleOptions = useMemo(() => [
         {
-            id: '1',
+            id: '0',
             label: 'Phụ huynh',
-            value: 1,
+            value: 0,
             labelStyle: {
                 fontSize: 20
             }
         },
         {
-            id: '2',
+            id: '1',
             label: 'Gia sư',
-            value: 2,
+            value: 1,
             labelStyle: {
                 fontSize: 20
             }
@@ -37,6 +37,7 @@ function SignUpPage({ navigation }) {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
     const auth = FIREBASE_AUTH;
+    const db = FIREBASE_DB;
     const toast = useToast();
 
     const signUp = async () => {
@@ -64,11 +65,11 @@ function SignUpPage({ navigation }) {
         }
         try{
             const response = await createUserWithEmailAndPassword(auth, email, password);
-            setDoc(doc(FIREBASE_DB, "users", response.user.uid), {role: roleOptions[role].label})
+            setDoc(doc(db, "users", response.user.uid), {role: roleOptions[role].label})
             toast.show("Tạo tài khoản mới thành công", {type: 'success', placement: 'bottom'});
             navigation.goBack()
         } catch (err) {
-            console.log(err.code)
+            console.log(err)
             if(err.code == 'auth/invalid-email'){
                 setErrorMessage("Email không hợp lệ");
                 return;
@@ -90,7 +91,7 @@ function SignUpPage({ navigation }) {
             <KeyboardAwareScrollView style={{height: "100%"}}>
                 <View style={DefaultStyle.box}>
                     <Text style={DefaultStyle.titleText}>Đăng ký</Text>
-                    <TextInput style={DefaultStyle.input} placeholder='Email' value={email} onChangeText={setEmail}/>
+                    <TextInput style={DefaultStyle.input} placeholder='Email' value={email} onChangeText={setEmail} keyboardType='email-address'/>
                     <TextInput style={DefaultStyle.input} placeholder='Mật khẩu' secureTextEntry={true} value={password} onChangeText={setPassword}/>
                     <TextInput style={DefaultStyle.input} placeholder='Xác nhận mật khẩu' secureTextEntry={true} value={confirmPassword} onChangeText={setConfirmPassword}/>
                     <View style={{flexDirection: 'row', marginBottom: 20}}>
