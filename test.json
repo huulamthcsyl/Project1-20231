@@ -1,0 +1,701 @@
+{
+    "_dispatchInstances": {
+        "_debugHookTypes": null,
+        "_debugNeedsRemount": false,
+        "_debugOwner": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 6.320288956165314,
+            "actualStartTime": 316215176.469541,
+            "alternate": [FiberNode
+            ],
+            "child": [Circular
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": [Function ScrollView
+            ],
+            "flags": 5,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": [Object
+            ],
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": null,
+            "return": [FiberNode
+            ],
+            "selfBaseDuration": 1.833916962146759,
+            "sibling": null,
+            "stateNode": [ScrollView
+            ],
+            "subtreeFlags": 8391173,
+            "tag": 1,
+            "treeBaseDuration": 6.1597079038619995,
+            "type": [Function ScrollView
+            ],
+            "updateQueue": [Object
+            ]
+        },
+        "_debugSource": undefined,
+        "actualDuration": 4.483830988407135,
+        "actualStartTime": 316215178.305791,
+        "alternate": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 5.618079900741577,
+            "actualStartTime": 316212802.996583,
+            "alternate": [Circular
+            ],
+            "child": [FiberNode
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": "RCTScrollView",
+            "flags": 4,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": null,
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": [Function anonymous
+            ],
+            "return": [FiberNode
+            ],
+            "selfBaseDuration": 0.03549998998641968,
+            "sibling": null,
+            "stateNode": [ReactNativeFiberHostComponent
+            ],
+            "subtreeFlags": 8391173,
+            "tag": 5,
+            "treeBaseDuration": 5.432747960090637,
+            "type": "RCTScrollView",
+            "updateQueue": null
+        },
+        "child": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 4.462831974029541,
+            "actualStartTime": 316215178.325208,
+            "alternate": [FiberNode
+            ],
+            "child": [FiberNode
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": "RCTScrollContentView",
+            "flags": 4,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": null,
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": [Function anonymous
+            ],
+            "return": [Circular
+            ],
+            "selfBaseDuration": 0.013541996479034424,
+            "sibling": null,
+            "stateNode": [ReactNativeFiberHostComponent
+            ],
+            "subtreeFlags": 8391173,
+            "tag": 5,
+            "treeBaseDuration": 4.307624936103821,
+            "type": "RCTScrollContentView",
+            "updateQueue": null
+        },
+        "childLanes": 0,
+        "deletions": null,
+        "dependencies": null,
+        "elementType": "RCTScrollView",
+        "flags": 4,
+        "index": 0,
+        "key": null,
+        "lanes": 0,
+        "memoizedProps": {
+            "alwaysBounceHorizontal": undefined,
+            "alwaysBounceVertical": true,
+            "automaticallyAdjustContentInsets": false,
+            "children": <RCTScrollContentView … />,
+            "contentContainerStyle": undefined,
+            "contentInset": [Object
+            ],
+            "enableAutomaticScroll": true,
+            "enableOnAndroid": false,
+            "enableResetScrollToCoords": true,
+            "extraHeight": 75,
+            "extraScrollHeight": 0,
+            "getScrollResponder": [Function anonymous
+            ],
+            "handleOnScroll": [Function anonymous
+            ],
+            "keyboardDismissMode": "interactive",
+            "keyboardOpeningTime": 250,
+            "keyboardSpace": 0,
+            "onContentSizeChange": null,
+            "onLayout": [Function anonymous
+            ],
+            "onMomentumScrollBegin": [Function anonymous
+            ],
+            "onMomentumScrollEnd": [Function anonymous
+            ],
+            "onResponderGrant": [Function anonymous
+            ],
+            "onResponderReject": [Function anonymous
+            ],
+            "onResponderRelease": [Function anonymous
+            ],
+            "onResponderTerminationRequest": [Function anonymous
+            ],
+            "onScroll": [Function anonymous
+            ],
+            "onScrollBeginDrag": [Function anonymous
+            ],
+            "onScrollEndDrag": [Function anonymous
+            ],
+            "onScrollShouldSetResponder": [Function anonymous
+            ],
+            "onStartShouldSetResponder": [Function anonymous
+            ],
+            "onStartShouldSetResponderCapture": [Function anonymous
+            ],
+            "onTouchCancel": [Function anonymous
+            ],
+            "onTouchEnd": [Function anonymous
+            ],
+            "onTouchMove": [Function anonymous
+            ],
+            "onTouchStart": [Function anonymous
+            ],
+            "pagingEnabled": false,
+            "resetKeyboardSpace": [Function anonymous
+            ],
+            "scrollEventThrottle": 1,
+            "scrollForExtraHeightOnAndroid": [Function anonymous
+            ],
+            "scrollIntoView": [Function anonymous
+            ],
+            "scrollToEnd": [Function anonymous
+            ],
+            "scrollToFocusedInput": [Function anonymous
+            ],
+            "scrollToPosition": [Function anonymous
+            ],
+            "scrollViewRef": [Function anonymous
+            ],
+            "sendMomentumEvents": false,
+            "showsVerticalScrollIndicator": true,
+            "snapToEnd": true,
+            "snapToStart": true,
+            "style": [Array
+            ],
+            "update": [Function anonymous
+            ],
+            "viewIsInsideTabBar": false
+        },
+        "memoizedState": null,
+        "mode": 2,
+        "pendingProps": {
+            "alwaysBounceHorizontal": undefined,
+            "alwaysBounceVertical": true,
+            "automaticallyAdjustContentInsets": false,
+            "children": <RCTScrollContentView … />,
+            "contentContainerStyle": undefined,
+            "contentInset": [Object
+            ],
+            "enableAutomaticScroll": true,
+            "enableOnAndroid": false,
+            "enableResetScrollToCoords": true,
+            "extraHeight": 75,
+            "extraScrollHeight": 0,
+            "getScrollResponder": [Function anonymous
+            ],
+            "handleOnScroll": [Function anonymous
+            ],
+            "keyboardDismissMode": "interactive",
+            "keyboardOpeningTime": 250,
+            "keyboardSpace": 0,
+            "onContentSizeChange": null,
+            "onLayout": [Function anonymous
+            ],
+            "onMomentumScrollBegin": [Function anonymous
+            ],
+            "onMomentumScrollEnd": [Function anonymous
+            ],
+            "onResponderGrant": [Function anonymous
+            ],
+            "onResponderReject": [Function anonymous
+            ],
+            "onResponderRelease": [Function anonymous
+            ],
+            "onResponderTerminationRequest": [Function anonymous
+            ],
+            "onScroll": [Function anonymous
+            ],
+            "onScrollBeginDrag": [Function anonymous
+            ],
+            "onScrollEndDrag": [Function anonymous
+            ],
+            "onScrollShouldSetResponder": [Function anonymous
+            ],
+            "onStartShouldSetResponder": [Function anonymous
+            ],
+            "onStartShouldSetResponderCapture": [Function anonymous
+            ],
+            "onTouchCancel": [Function anonymous
+            ],
+            "onTouchEnd": [Function anonymous
+            ],
+            "onTouchMove": [Function anonymous
+            ],
+            "onTouchStart": [Function anonymous
+            ],
+            "pagingEnabled": false,
+            "resetKeyboardSpace": [Function anonymous
+            ],
+            "scrollEventThrottle": 1,
+            "scrollForExtraHeightOnAndroid": [Function anonymous
+            ],
+            "scrollIntoView": [Function anonymous
+            ],
+            "scrollToEnd": [Function anonymous
+            ],
+            "scrollToFocusedInput": [Function anonymous
+            ],
+            "scrollToPosition": [Function anonymous
+            ],
+            "scrollViewRef": [Function anonymous
+            ],
+            "sendMomentumEvents": false,
+            "showsVerticalScrollIndicator": true,
+            "snapToEnd": true,
+            "snapToStart": true,
+            "style": [Array
+            ],
+            "update": [Function anonymous
+            ],
+            "viewIsInsideTabBar": false
+        },
+        "ref": [Function anonymous
+        ],
+        "return": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 6.320288956165314,
+            "actualStartTime": 316215176.469541,
+            "alternate": [FiberNode
+            ],
+            "child": [Circular
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": [Function ScrollView
+            ],
+            "flags": 5,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": [Object
+            ],
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": null,
+            "return": [FiberNode
+            ],
+            "selfBaseDuration": 1.833916962146759,
+            "sibling": null,
+            "stateNode": [ScrollView
+            ],
+            "subtreeFlags": 8391173,
+            "tag": 1,
+            "treeBaseDuration": 6.1597079038619995,
+            "type": [Function ScrollView
+            ],
+            "updateQueue": [Object
+            ]
+        },
+        "selfBaseDuration": 0.018166005611419678,
+        "sibling": null,
+        "stateNode": {
+            "_children": [Array
+            ],
+            "_internalFiberInstanceHandleDEV": [FiberNode
+            ],
+            "_nativeTag": 43,
+            "flashScrollIndicators": [Function anonymous
+            ],
+            "getInnerViewNode": [Function anonymous
+            ],
+            "getInnerViewRef": [Function anonymous
+            ],
+            "getNativeScrollRef": [Function anonymous
+            ],
+            "getScrollResponder": [Function anonymous
+            ],
+            "getScrollableNode": [Function anonymous
+            ],
+            "scrollResponderScrollNativeHandleToKeyboard": [Function anonymous
+            ],
+            "scrollResponderZoomTo": [Function anonymous
+            ],
+            "scrollTo": [Function anonymous
+            ],
+            "scrollToEnd": [Function anonymous
+            ],
+            "viewConfig": [Object
+            ]
+        },
+        "subtreeFlags": 8391173,
+        "tag": 5,
+        "treeBaseDuration": 4.3257909417152405,
+        "type": "RCTScrollView",
+        "updateQueue": null
+    },
+    "_dispatchListeners": [Function anonymous
+    ],
+    "_targetInst": {
+        "_debugHookTypes": null,
+        "_debugNeedsRemount": false,
+        "_debugOwner": {
+            "_debugHookTypes": [Array
+            ],
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 0.20758402347564697,
+            "actualStartTime": 316215182.030291,
+            "alternate": [FiberNode
+            ],
+            "child": [FiberNode
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": [Object
+            ],
+            "elementType": [Object
+            ],
+            "flags": 8388609,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": [Object
+            ],
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": null,
+            "return": [FiberNode
+            ],
+            "selfBaseDuration": 0.1505420207977295,
+            "sibling": [FiberNode
+            ],
+            "stateNode": null,
+            "subtreeFlags": 4,
+            "tag": 11,
+            "treeBaseDuration": 0.1929171085357666,
+            "type": [Object
+            ],
+            "updateQueue": [Object
+            ]
+        },
+        "_debugSource": undefined,
+        "actualDuration": 0.03425103425979614,
+        "actualStartTime": 316215182.201541,
+        "alternate": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 0.02816593647003174,
+            "actualStartTime": 316212808.093458,
+            "alternate": [Circular
+            ],
+            "child": [FiberNode
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": "RCTText",
+            "flags": 4,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": null,
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": null,
+            "return": [FiberNode
+            ],
+            "selfBaseDuration": 0.015707969665527344,
+            "sibling": null,
+            "stateNode": [ReactNativeFiberHostComponent
+            ],
+            "subtreeFlags": 0,
+            "tag": 5,
+            "treeBaseDuration": 0.019124984741210938,
+            "type": "RCTText",
+            "updateQueue": null
+        },
+        "child": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "actualDuration": 0.004208981990814209,
+            "actualStartTime": 316215182.2245,
+            "alternate": [FiberNode
+            ],
+            "child": null,
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": null,
+            "flags": 0,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": "Đăng nhập",
+            "memoizedState": null,
+            "mode": 2,
+            "pendingProps": "Đăng nhập",
+            "ref": null,
+            "return": [Circular
+            ],
+            "selfBaseDuration": 0.0034170150756835938,
+            "sibling": null,
+            "stateNode": 17,
+            "subtreeFlags": 0,
+            "tag": 6,
+            "treeBaseDuration": 0.0034170150756835938,
+            "type": null,
+            "updateQueue": null
+        },
+        "childLanes": 0,
+        "deletions": null,
+        "dependencies": null,
+        "elementType": "RCTText",
+        "flags": 4,
+        "index": 0,
+        "key": null,
+        "lanes": 0,
+        "memoizedProps": {
+            "accessibilityLabel": undefined,
+            "accessibilityRole": undefined,
+            "accessibilityState": undefined,
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Đăng nhập",
+            "disabled": undefined,
+            "ellipsizeMode": "tail",
+            "isHighlighted": false,
+            "nativeID": undefined,
+            "numberOfLines": undefined,
+            "selectable": undefined,
+            "selectionColor": null,
+            "style": [Object
+            ]
+        },
+        "memoizedState": null,
+        "mode": 2,
+        "pendingProps": {
+            "accessibilityLabel": undefined,
+            "accessibilityRole": undefined,
+            "accessibilityState": undefined,
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Đăng nhập",
+            "disabled": undefined,
+            "ellipsizeMode": "tail",
+            "isHighlighted": false,
+            "nativeID": undefined,
+            "numberOfLines": undefined,
+            "selectable": undefined,
+            "selectionColor": null,
+            "style": [Object
+            ]
+        },
+        "ref": null,
+        "return": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 0.05504202842712402,
+            "actualStartTime": 316215182.183083,
+            "alternate": [FiberNode
+            ],
+            "child": [Circular
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": [Object
+            ],
+            "flags": 0,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": null,
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": null,
+            "return": [FiberNode
+            ],
+            "selfBaseDuration": 0.01716601848602295,
+            "sibling": null,
+            "stateNode": null,
+            "subtreeFlags": 4,
+            "tag": 10,
+            "treeBaseDuration": 0.04237508773803711,
+            "type": [Object
+            ],
+            "updateQueue": null
+        },
+        "selfBaseDuration": 0.021792054176330566,
+        "sibling": null,
+        "stateNode": {
+            "_children": [Array
+            ],
+            "_internalFiberInstanceHandleDEV": [Circular
+            ],
+            "_nativeTag": 19,
+            "viewConfig": [Object
+            ]
+        },
+        "subtreeFlags": 0,
+        "tag": 5,
+        "treeBaseDuration": 0.02520906925201416,
+        "type": "RCTText",
+        "updateQueue": null
+    },
+    "bubbles": undefined,
+    "cancelable": undefined,
+    "currentTarget": null,
+    "defaultPrevented": undefined,
+    "dispatchConfig": {
+        "phasedRegistrationNames": {
+            "bubbled": "onTouchEnd",
+            "captured": "onTouchEndCapture"
+        }
+    },
+    "eventPhase": undefined,
+    "isDefaultPrevented": [Function functionThatReturnsFalse
+    ],
+    "isPropagationStopped": [Function functionThatReturnsFalse
+    ],
+    "isTrusted": undefined,
+    "nativeEvent": {
+        "changedTouches": [
+            [Circular
+            ]
+        ],
+        "identifier": 1,
+        "locationX": 129,
+        "locationY": 28.666661262512207,
+        "pageX": 245,
+        "pageY": 485.3333282470703,
+        "target": 19,
+        "timestamp": 241670593.51341668,
+        "touches": []
+    },
+    "target": {
+        "_children": [
+            17
+        ],
+        "_internalFiberInstanceHandleDEV": {
+            "_debugHookTypes": null,
+            "_debugNeedsRemount": false,
+            "_debugOwner": [FiberNode
+            ],
+            "_debugSource": undefined,
+            "actualDuration": 0.03425103425979614,
+            "actualStartTime": 316215182.201541,
+            "alternate": [FiberNode
+            ],
+            "child": [FiberNode
+            ],
+            "childLanes": 0,
+            "deletions": null,
+            "dependencies": null,
+            "elementType": "RCTText",
+            "flags": 4,
+            "index": 0,
+            "key": null,
+            "lanes": 0,
+            "memoizedProps": [Object
+            ],
+            "memoizedState": null,
+            "mode": 2,
+            "pendingProps": [Object
+            ],
+            "ref": null,
+            "return": [FiberNode
+            ],
+            "selfBaseDuration": 0.021792054176330566,
+            "sibling": null,
+            "stateNode": [Circular
+            ],
+            "subtreeFlags": 0,
+            "tag": 5,
+            "treeBaseDuration": 0.02520906925201416,
+            "type": "RCTText",
+            "updateQueue": null
+        },
+        "_nativeTag": 19,
+        "viewConfig": {
+            "Commands": [Object
+            ],
+            "bubblingEventTypes": [Object
+            ],
+            "directEventTypes": [Object
+            ],
+            "uiViewClassName": "RCTText",
+            "validAttributes": [Object
+            ]
+        }
+    },
+    "timeStamp": 1700499663849,
+    "type": undefined
+}

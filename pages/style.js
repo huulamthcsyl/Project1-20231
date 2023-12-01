@@ -55,5 +55,10 @@ export const DefaultStyle = StyleSheet.create({
     },
     text: {
         fontSize: 20
+    },
+    errorText: {
+        fontSize: 20,
+        color: 'red',
+        marginBottom: 20
     }
 })
