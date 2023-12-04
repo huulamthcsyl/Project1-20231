@@ -12,12 +12,12 @@ export default function ParentScreen() {
       <Tab.Screen 
         name='Parent class' 
         component={ParentClassScreen} 
-        options={{ headerShown: false, title: "Lớp học", tabBarLabelStyle: {fontSize: 12}, tabBarIcon: ({ focused, horizontal, tintColor }) => <Image source={require('../assets/class.png')} />}}
+        options={{ headerShown: false, title: "Lớp học", tabBarLabelStyle: {fontSize: 12}, tabBarIcon: ({ focused, horizontal, tintColor }) => <Image source={require('../../assets/class.png')} />}}
       />
       <Tab.Screen 
         name='Parent profile' 
         component={ParentProfileScreen} 
-        options={{ headerShown: false, title: "Hồ sơ", tabBarLabelStyle: {fontSize: 12}, tabBarIcon: ({ focused, horizontal, tintColor }) => <Image source={require('../assets/profile.png')} />}}
+        options={{ headerShown: false, title: "Hồ sơ", tabBarLabelStyle: {fontSize: 12}, tabBarIcon: ({ focused, horizontal, tintColor }) => <Image source={require('../../assets/profile.png')} />}}
       />
     </Tab.Navigator>
   )

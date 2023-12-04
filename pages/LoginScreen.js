@@ -1,7 +1,7 @@
 import { View, Text, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native'
 import CustomButton from './components/CustomButton'
 import { DefaultStyle } from './style'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -25,9 +25,18 @@ export default function LoginScreen({ navigation }) {
         navigation.navigate("Tutor class")
       }
     } catch (err) {
-      alert(err.message);
+      alert("Email hoặc mật khẩu không đúng");
     }
   }
+
+  useEffect(() => {
+    const onLoad = navigation.addListener('focus', () => {
+      setEmail("");
+      setPassword("");
+    });
+
+    return onLoad;
+  }, [navigation])
 
   return (
     <SafeAreaView>

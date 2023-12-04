@@ -1,10 +1,10 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { DefaultStyle } from '../style'
 
-export default function ParentClassCard({classData}) {
+export default function ParentClassCard({classData, handlePress}) {
   return (
-    <View style={DefaultStyle.card}>
+    <TouchableOpacity style={DefaultStyle.card} onPress={handlePress}>
       <Text style={{...DefaultStyle.classTitle, fontSize: 24, marginBottom: 10}}>{classData.classTitle}</Text>
       <View style={{flexDirection: 'row'}}>
         <Image style={{marginRight: 10}} source={require('../../assets/classId.png')} />
@@ -14,7 +14,7 @@ export default function ParentClassCard({classData}) {
         <Image style={{marginRight: 10}} source={require('../../assets/subject.png')} />
         <Text style={{...DefaultStyle.secondaryText, margin: 0, fontSize: 18}}>{classData.subject}</Text>
       </View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', paddingRight: 40}}>
         <Image style={{marginRight: 10}} source={require('../../assets/address.png')} />
         <Text style={{...DefaultStyle.secondaryText, margin: 0, fontSize: 18}}>{classData.location}</Text>
       </View>
@@ -24,6 +24,6 @@ export default function ParentClassCard({classData}) {
         <Text style={{...DefaultStyle.secondaryText, margin: 0, fontSize: 18, color: 'red'}}>Đã giao</Text>:
         <Text style={{...DefaultStyle.secondaryText, margin: 0, fontSize: 18, color: '#38C036', fontWeight: 500}}>Chưa giao</Text>}
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }

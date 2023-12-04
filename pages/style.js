@@ -15,7 +15,7 @@ export const DefaultStyle = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   input: {
     borderWidth: 1,
@@ -104,5 +104,10 @@ export const DefaultStyle = StyleSheet.create({
   classTitle: {
     color: '#4834D4',
     fontWeight: '600'
+  },
+  profileButton: {
+    borderRadius: 5,
+    borderWidth: 1,
+    width: '80%'
   }
 })

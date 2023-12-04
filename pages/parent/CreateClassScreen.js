@@ -1,15 +1,15 @@
 import { View, Text, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { DefaultStyle } from './style'
+import { DefaultStyle } from '../style'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import RNPickerSelect from 'react-native-picker-select';
-import CustomButton from './components/CustomButton'
+import CustomButton from '../components/CustomButton'
 import { collection, doc, getDocs, setDoc } from 'firebase/firestore'
-import { FIREBASE_AUTH, FIREBASE_DB } from '../firebaseConfig'
+import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig'
 import { useToast } from 'react-native-toast-notifications'
 
-export default function CreateClassScreen({ navigation }) {
+export default function CreateClassScreen({ route, navigation }) {
 
   const [subject, setSubject] = useState(null);
   const [classTitle, setClassTitle] = useState();
@@ -17,6 +17,10 @@ export default function CreateClassScreen({ navigation }) {
   const [location, setLocation] = useState();
   const [duration, setDuration] = useState();
   const [requirement, setRequirement] = useState();
+  const [status, setStatus] = useState(false);
+  const [classId, setClassId] = useState(null);
+  const [parentId, setParentId] = useState();
+  const [isEditing, setIsEditing] = useState(false);
   const db = FIREBASE_DB;
   const auth = FIREBASE_AUTH;
   const toast = useToast();
@@ -42,7 +46,6 @@ export default function CreateClassScreen({ navigation }) {
   ]
 
   const handleSubmit = async () => {
-    let classId = makeid(6);
     const newClass = {
       classId: classId,
       classTitle: classTitle,
@@ -51,22 +54,40 @@ export default function CreateClassScreen({ navigation }) {
       duration: duration,
       location: location,
       requirement: requirement,
-      parentId: auth.currentUser.uid,
-      status: false
+      parentId: parentId,
+      status: status
     }
     try{
       setDoc(doc(db, "classes", classId), newClass);
+      toast.show(isEditing ? "Chỉnh sửa lớp học thành công" : "Tạo lớp học mới thành công", { type: 'success', placement: 'bottom' });
+      navigation.goBack()
     } catch (err) {
-      console.log(err)
+      alert("Nhập các thông tin còn thiếu");
+      console.log(err);
     }
-    toast.show("Tạo lớp học mới thành công", { type: 'success', placement: 'bottom' });
-    navigation.goBack()
   }
+
+  useEffect(() => {
+    let classData = null;
+    if(route.params) classData = route.params['classData'];
+    if(classData){
+      setClassTitle(classData.classTitle);
+      setDuration(classData.duration);
+      setFee(classData.fee);
+      setLocation(classData.location);
+      setRequirement(classData.requirement);
+      setSubject(classData.subject);
+      setStatus(classData.status);
+      setClassId(classData.classId);
+      setIsEditing(true);
+    } else setClassId(makeid(6));
+    setParentId(auth.currentUser.uid);
+  }, [])
 
   return (
     <SafeAreaView style={DefaultStyle.container}> 
       <View style={DefaultStyle.header}>
-        <Text style={DefaultStyle.titleHeader}>Tạo lớp học mới</Text>
+        <Text style={DefaultStyle.titleHeader}>{isEditing ? "Chỉnh sửa lớp học" : "Tạo lớp học mới"}</Text>
       </View>
       <KeyboardAwareScrollView>
         <View style={{ height: "100%", padding: 10 }}>
@@ -98,7 +119,7 @@ export default function CreateClassScreen({ navigation }) {
             <Text style={{...DefaultStyle.title, marginBottom: 10}}>Yêu cầu</Text>
             <TextInput style={{...DefaultStyle.input, marginBottom: 0, height: 100}} value={requirement} onChangeText={setRequirement} multiline blurOnSubmit/>
           </View>
-          <CustomButton title="Tạo lớp học" action={handleSubmit}/>
+          <CustomButton title="Xác nhận" action={handleSubmit}/>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>
