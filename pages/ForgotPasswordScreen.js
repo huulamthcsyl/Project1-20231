@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, View, Text, TextInput } from 'react-native'
 import { DefaultStyle } from './style'
 import CustomButton from './components/CustomButton'
 
-function ForgotPasswordPage() {
+export default function ForgotPasswordScreen() {
   return (
     <KeyboardAvoidingView>
         <View style={DefaultStyle.box}>
@@ -15,5 +15,3 @@ function ForgotPasswordPage() {
     </KeyboardAvoidingView>
   )
 }
-
-export default ForgotPasswordPage
