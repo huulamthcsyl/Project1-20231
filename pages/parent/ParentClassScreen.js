@@ -1,21 +1,15 @@
 import { Text, View, Image, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { DefaultStyle } from '../style'
 import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import ParentClassCard from '../components/ParentClassCard'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import ParentProfileScreen from './ParentProfileScreen'
-import { useFocusEffect } from '@react-navigation/native'
 
 export default function ParentClassScreen({ navigation }) {
 
   const auth = FIREBASE_AUTH;
   const db = FIREBASE_DB;
   const [classes, setClasses] = useState([]);
-
-  const Tab = createBottomTabNavigator();
 
   async function getClass() {
     const parentId = auth.currentUser.uid;

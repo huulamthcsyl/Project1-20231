@@ -4,7 +4,7 @@ import { DefaultStyle } from './style'
 import { useState, useEffect } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FIREBASE_AUTH, FIREBASE_DB } from '../firebaseConfig'
 import { getDoc, doc } from 'firebase/firestore';
 
@@ -22,7 +22,7 @@ export default function LoginScreen({ navigation }) {
       if (data['role'] == "Phụ huynh") {
         navigation.navigate("Parent screen")
       } else {
-        navigation.navigate("Tutor class")
+        navigation.navigate("Tutor screen")
       }
     } catch (err) {
       alert("Email hoặc mật khẩu không đúng");

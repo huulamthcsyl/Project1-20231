@@ -5,7 +5,7 @@ import { DefaultStyle } from '../style'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import RNPickerSelect from 'react-native-picker-select';
 import CustomButton from '../components/CustomButton'
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore'
+import { doc, setDoc } from 'firebase/firestore'
 import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig'
 import { useToast } from 'react-native-toast-notifications'
 
@@ -45,17 +45,19 @@ export default function CreateClassScreen({ route, navigation }) {
     {label: 'Tin học', value: 'Tin học'},
   ]
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const newClass = {
       classId: classId,
       classTitle: classTitle,
       subject: subject,
-      fee: fee,
-      duration: duration,
+      fee: parseInt(fee),
+      duration: parseFloat(duration),
       location: location,
       requirement: requirement,
       parentId: parentId,
-      status: status
+      status: status,
+      tutorList: [],
+      assignedTutor: null
     }
     try{
       setDoc(doc(db, "classes", classId), newClass);
@@ -98,7 +100,7 @@ export default function CreateClassScreen({ route, navigation }) {
           <View style={{display: 'flex', flexDirection: 'row', marginBottom: 20}}>
             <Text style={{...DefaultStyle.title, marginTop: 5, marginRight: 20}}>Môn học</Text>
             <View style={{borderWidth: 1, padding: 10, borderRadius: 5, width: 100}}>
-            <RNPickerSelect placeholder={{label: "Môn học"}} value={subject} onValueChange={(value) => setSubject(value)} items={subjectList} />
+              <RNPickerSelect useNativeAndroidPickerStyle={false} placeholder={{label: "Môn học"}} value={subject} onValueChange={(value) => setSubject(value)} items={subjectList} />
             </View>
           </View>
           <View style={{display: 'flex', flexDirection: 'row', marginBottom: 20}}>

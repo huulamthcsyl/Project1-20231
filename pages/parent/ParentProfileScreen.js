@@ -28,10 +28,6 @@ export default function ParentProfileScreen({ navigation }) {
           <Image style={{marginRight: 10}} source={require('../../assets/class.png')}/>
           <Text style={DefaultStyle.title}>Hồ sơ phụ huynh</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{...DefaultStyle.profileButton, flexDirection: 'row', padding: 10, marginVertical: 40}}>
-          <Image style={{marginRight: 10}} source={require('../../assets/subject.png')}/>
-          <Text style={DefaultStyle.title}>Lớp đã nhận</Text>
-        </TouchableOpacity>
       </View>
       <View style={{position: 'absolute', bottom: 40, alignSelf: 'center', width: '80%'}}>
         <CustomButton action={handleLogout} title="Đăng xuất" />
