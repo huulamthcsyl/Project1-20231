@@ -9,6 +9,7 @@ import ParentScreen from './pages/parent/ParentScreen';
 import ClassDetailParentScreen from './pages/parent/ClassDetailParentScreen';
 import TutorScreen from './pages/tutor/TutorScreen';
 import ClassDetailTutorScreen from './pages/tutor/ClassDetailTutorScreen';
+import TutorInfoScreen from './pages/tutor/TutorInfoScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
           <Stack.Screen name='Create class' component={CreateClassScreen} options={{ headerShown: false }} />
           <Stack.Screen name='Class detail parent' component={ClassDetailParentScreen} options={{ headerShown: false }} />
           <Stack.Screen name='Class detail tutor' component={ClassDetailTutorScreen} options={{ headerShown: false }} />
+          <Stack.Screen name='Tutor info' component={TutorInfoScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     </ToastProvider>
