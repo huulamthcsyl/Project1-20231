@@ -15,7 +15,7 @@ export default function ParentProfileScreen({ navigation }) {
   }
 
   return (
-    <View style={{...DefaultStyle.container, paddingTop: 45}}>
+    <SafeAreaView style={{...DefaultStyle.container}}>
       <View style={DefaultStyle.header}>
         <Text style={DefaultStyle.titleHeader}>Hồ sơ phụ huynh</Text>
       </View>
@@ -32,6 +32,6 @@ export default function ParentProfileScreen({ navigation }) {
       <View style={{position: 'absolute', bottom: 40, alignSelf: 'center', width: '80%'}}>
         <CustomButton action={handleLogout} title="Đăng xuất" />
       </View>
-    </View>
+    </SafeAreaView>
   )
 }

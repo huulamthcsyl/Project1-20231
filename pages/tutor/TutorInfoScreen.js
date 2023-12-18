@@ -99,7 +99,7 @@ export default function TutorInfoScreen() {
           </View>
           <View>
             <Text style={{...DefaultStyle.title, marginBottom: 10}}>Số điện thoại</Text>
-            <TextInput style={DefaultStyle.input} value={phoneNumber} onChangeText={setPhoneNumber}/>
+            <TextInput style={DefaultStyle.input} value={phoneNumber} onChangeText={setPhoneNumber} keyboardType='numeric'/>
           </View>
           <View>
             <Text style={{...DefaultStyle.title, marginBottom: 10}}>Nơi học (công tác)</Text>

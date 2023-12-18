@@ -1,14 +1,39 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { DefaultStyle } from '../style';
 import { FIREBASE_DB } from '../../firebaseConfig';
 import { getDoc, doc } from 'firebase/firestore';
 
+const db = FIREBASE_DB;
+
+function ProfileInfoCard({ tutorId }) {
+  const [tutorInfo, setTutorInfo] = useState();
+
+  useEffect(() => {
+    getDoc(doc(db, "users", tutorId))
+    .then(res => setTutorInfo(res.data()))
+    .catch(err => console.log(err));
+  }, []);
+
+
+  return (
+    tutorInfo ? 
+    <View style={{borderWidth: 1, borderRadius: 5, flexDirection: 'row', padding: 10, display: 'flex'}}>
+      <Image style={{marginRight: 20}} source={require('../../assets/profile.png')} />
+      <Text style={DefaultStyle.text}>{tutorInfo.name}</Text>
+      <View style={{flex: 1, marginRight: 10, flexDirection: 'row-reverse', gap: 10, paddingTop: 3}}>
+        <Image source={require("../../assets/info.png")} />
+        <Image source={require("../../assets/accept.png")} />
+      </View>
+    </View> 
+    : null
+  )
+}
+
 export default function ClassDetailParentScreen({ route, navigation }) {
   const { classId } = route.params;
   const [classData, setClassData] = useState(null);
-  const db = FIREBASE_DB;
 
   async function getClassInfo(){
     try {
@@ -78,11 +103,11 @@ export default function ClassDetailParentScreen({ route, navigation }) {
           </View>
           <View>
             <Text style={DefaultStyle.title}>Gia sư ứng tuyển: </Text>
+            <FlatList data={classData.tutorList} renderItem={(data) => <ProfileInfoCard tutorId={data.item}/>}/>
           </View>
         </View> 
         : null
       }
-
     </SafeAreaView>
   )
 }

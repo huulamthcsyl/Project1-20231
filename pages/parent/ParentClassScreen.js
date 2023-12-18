@@ -4,6 +4,7 @@ import { DefaultStyle } from '../style'
 import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import ParentClassCard from '../components/ParentClassCard'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function ParentClassScreen({ navigation }) {
 
@@ -35,7 +36,7 @@ export default function ParentClassScreen({ navigation }) {
   
 
   return (
-    <View style={{...DefaultStyle.container, paddingTop: 45}}>
+    <SafeAreaView style={{...DefaultStyle.container}}>
       <View style={DefaultStyle.header}>
         <Text style={DefaultStyle.titleHeader}>Danh sách lớp quản lý</Text>
       </View>
@@ -45,6 +46,6 @@ export default function ParentClassScreen({ navigation }) {
       <TouchableOpacity style={DefaultStyle.floatingButton} onPress={() => navigation.navigate("Create class")}>
         <Image style={DefaultStyle.floatingIcon} source={require('../../assets/add.png')} />
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   )
 }

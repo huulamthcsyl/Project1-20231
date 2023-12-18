@@ -74,8 +74,8 @@ export default function CreateClassScreen({ route, navigation }) {
     if(route.params) classData = route.params['classData'];
     if(classData){
       setClassTitle(classData.classTitle);
-      setDuration(classData.duration);
-      setFee(classData.fee);
+      setDuration(classData.duration.toString());
+      setFee(classData.fee.toString());
       setLocation(classData.location);
       setRequirement(classData.requirement);
       setSubject(classData.subject);
@@ -115,11 +115,11 @@ export default function CreateClassScreen({ route, navigation }) {
           </View>
           <View style={{marginBottom: 20}}>
             <Text style={{...DefaultStyle.title, marginBottom: 10}}>Địa điểm</Text>
-            <TextInput style={{...DefaultStyle.input, marginBottom: 0, height: 100}} value={location} onChangeText={setLocation} multiline blurOnSubmit/>
+            <TextInput textAlignVertical='top' style={{...DefaultStyle.input, marginBottom: 0, height: 100}} value={location} onChangeText={setLocation} multiline blurOnSubmit/>
           </View>
           <View style={{marginBottom: 20}}>
             <Text style={{...DefaultStyle.title, marginBottom: 10}}>Yêu cầu</Text>
-            <TextInput style={{...DefaultStyle.input, marginBottom: 0, height: 100}} value={requirement} onChangeText={setRequirement} multiline blurOnSubmit/>
+            <TextInput textAlignVertical='top' style={{...DefaultStyle.input, marginBottom: 0, height: 100}} value={requirement} onChangeText={setRequirement} multiline blurOnSubmit/>
           </View>
           <CustomButton title="Xác nhận" action={handleSubmit}/>
         </View>
