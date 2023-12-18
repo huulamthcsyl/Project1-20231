@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import RNPickerSelect from 'react-native-picker-select';
 import CustomButton from '../components/CustomButton'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const RootStack = createNativeStackNavigator();
 
@@ -33,7 +34,7 @@ function HomeScreen({ navigation, route }) {
   }, [])
 
   return (
-    <View style={{ ...DefaultStyle.container, paddingTop: 45 }}>
+    <SafeAreaView style={DefaultStyle.container} edges={['top']}>
       <View style={DefaultStyle.header}>
         <Text style={DefaultStyle.titleHeader}>Danh sách lớp học</Text>
       </View>
@@ -43,7 +44,7 @@ function HomeScreen({ navigation, route }) {
       <TouchableOpacity style={DefaultStyle.floatingButton} onPress={() => navigation.navigate("Tutor class filter")}>
         <Image style={DefaultStyle.floatingIcon} source={require('../../assets/filter.png')} />
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   )
 }
 

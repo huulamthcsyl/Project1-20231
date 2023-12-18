@@ -7,7 +7,7 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { RadioGroup } from 'react-native-radio-buttons-group'
 import CustomButton from '../components/CustomButton'
 import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig'
-import { setDoc, doc } from 'firebase/firestore'
+import { setDoc, doc, getDoc } from 'firebase/firestore'
 import { useToast } from 'react-native-toast-notifications'
 
 export default function TutorInfoScreen() {
@@ -16,7 +16,7 @@ export default function TutorInfoScreen() {
   const db = FIREBASE_DB;
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [dateOfBirth, setDateOfBirth] = useState("01/01/2023");
+  const [dateOfBirth, setDateOfBirth] = useState("");
   const [gender, setGender] = useState();
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -51,6 +51,24 @@ export default function TutorInfoScreen() {
       setDateOfBirth(selectedDate.toLocaleDateString());
     } 
   }
+
+  useEffect(() => {
+    const uid = auth.currentUser.uid;
+    getDoc(doc(db, "users", uid))
+    .then(res => {
+      const data = res.data();
+      setName(data.name ? data.name : "");
+      setAddress(data.address ? data.address : "");
+      setGender(data.gender ? data.gender : "");
+      setPhoneNumber(data.phoneNumber ? data.phoneNumber : "");
+      setWorkAddress(data.workAddress ? data.workAddress : "");
+      setDescription(data.description ? data.description : "");
+      setDateOfBirth(data.dateOfBirth ? data.dateOfBirth : "");
+      if(data.dateOfBirth) setDate(new Date(data.dateOfBirth))
+    })
+    .catch(err => console.log(err));
+  }, [])
+  
   
   const onSubmit = () => {
     const info = {

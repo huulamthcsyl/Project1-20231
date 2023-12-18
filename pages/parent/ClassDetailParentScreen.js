@@ -19,12 +19,11 @@ function ProfileInfoCard({ tutorId }) {
 
   return (
     tutorInfo ? 
-    <View style={{borderWidth: 1, borderRadius: 5, flexDirection: 'row', padding: 10, display: 'flex'}}>
+    <View style={{borderWidth: 1, borderRadius: 5, flexDirection: 'row', padding: 10, display: 'flex', marginBottom: 10}}>
       <Image style={{marginRight: 20}} source={require('../../assets/profile.png')} />
       <Text style={DefaultStyle.text}>{tutorInfo.name}</Text>
       <View style={{flex: 1, marginRight: 10, flexDirection: 'row-reverse', gap: 10, paddingTop: 3}}>
         <Image source={require("../../assets/info.png")} />
-        <Image source={require("../../assets/accept.png")} />
       </View>
     </View> 
     : null

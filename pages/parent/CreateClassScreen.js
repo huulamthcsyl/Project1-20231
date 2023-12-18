@@ -1,11 +1,11 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { DefaultStyle } from '../style'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import RNPickerSelect from 'react-native-picker-select';
 import CustomButton from '../components/CustomButton'
-import { doc, setDoc } from 'firebase/firestore'
+import { deleteDoc, doc, setDoc } from 'firebase/firestore'
 import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig'
 import { useToast } from 'react-native-toast-notifications'
 
@@ -21,6 +21,8 @@ export default function CreateClassScreen({ route, navigation }) {
   const [classId, setClassId] = useState(null);
   const [parentId, setParentId] = useState();
   const [isEditing, setIsEditing] = useState(false);
+  const [tutorList, setTutorList] = useState([]);
+  const [assignedTutor, setAssignedTutor] = useState(null);
   const db = FIREBASE_DB;
   const auth = FIREBASE_AUTH;
   const toast = useToast();
@@ -56,8 +58,8 @@ export default function CreateClassScreen({ route, navigation }) {
       requirement: requirement,
       parentId: parentId,
       status: status,
-      tutorList: [],
-      assignedTutor: null
+      tutorList: tutorList,
+      assignedTutor: assignedTutor
     }
     try{
       setDoc(doc(db, "classes", classId), newClass);
@@ -67,6 +69,29 @@ export default function CreateClassScreen({ route, navigation }) {
       alert("Nhập các thông tin còn thiếu");
       console.log(err);
     }
+  }
+
+  const handleDelete = () => {
+    Alert.alert("Xác nhận xoá", "Bạn có chắn chắn muốn xoá lớp không?", 
+    [
+      {
+        text: "Xác nhận",
+        onPress: () => {
+          deleteDoc(doc(db, "classes", classId))
+          .then(res => {
+            toast.show("Xoá lớp thành công!", { type: 'success', placement: 'bottom' });
+            navigation.pop(2);
+          })
+          .catch(err => console.log(err));
+        }
+      },
+      {
+        text: "Huỷ bỏ",
+        onPress: () => {
+          
+        }
+      }
+    ]);
   }
 
   useEffect(() => {
@@ -82,6 +107,8 @@ export default function CreateClassScreen({ route, navigation }) {
       setStatus(classData.status);
       setClassId(classData.classId);
       setIsEditing(true);
+      setTutorList(classData.tutorList);
+      setAssignedTutor(classData.assignedTutor)
     } else setClassId(makeid(6));
     setParentId(auth.currentUser.uid);
   }, [])
@@ -121,7 +148,10 @@ export default function CreateClassScreen({ route, navigation }) {
             <Text style={{...DefaultStyle.title, marginBottom: 10}}>Yêu cầu</Text>
             <TextInput textAlignVertical='top' style={{...DefaultStyle.input, marginBottom: 0, height: 100}} value={requirement} onChangeText={setRequirement} multiline blurOnSubmit/>
           </View>
-          <CustomButton title="Xác nhận" action={handleSubmit}/>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <CustomButton title="Xác nhận" action={handleSubmit}/>
+            {classTitle ? <CustomButton title="Xoá" action={handleDelete} color='red'/> : null}
+          </View>
         </View>
       </KeyboardAwareScrollView>
     </SafeAreaView>

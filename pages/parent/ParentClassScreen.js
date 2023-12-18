@@ -36,7 +36,7 @@ export default function ParentClassScreen({ navigation }) {
   
 
   return (
-    <SafeAreaView style={{...DefaultStyle.container}}>
+    <SafeAreaView style={DefaultStyle.container} edges={['top']}>
       <View style={DefaultStyle.header}>
         <Text style={DefaultStyle.titleHeader}>Danh sách lớp quản lý</Text>
       </View>

@@ -40,7 +40,8 @@ export const DefaultStyle = StyleSheet.create({
     height: 60,
     borderRadius: 5,
     backgroundColor: "#4834D4",
-    marginBottom: 10
+    marginBottom: 10,
+    flex: 1
   },
   buttonText: {
     color: "#FFF",
