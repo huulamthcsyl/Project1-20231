@@ -68,8 +68,12 @@ export default function ClassDetailTutorScreen({ route, navigation }) {
             </View>
             {
                 classData.tutorList.includes(auth.currentUser.uid) ? 
-                <CustomButton title="Đã đăng ký nhận lớp" isDisable={true}/> :
-                <CustomButton title="Đăng ký nhận lớp" action={handleSubmit} />
+                <View style={{height: 60}}>
+                  <CustomButton title="Đã đăng ký nhận lớp" isDisable={true}/> 
+                </View> :
+                <View style={{height: 60}}>
+                  <CustomButton title="Đăng ký nhận lớp" action={handleSubmit} />
+                </View>
             }
           </View> 
           : null

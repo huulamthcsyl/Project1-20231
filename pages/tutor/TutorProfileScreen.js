@@ -28,6 +28,10 @@ export default function TutorProfileScreen({ navigation }) {
           <Image style={{marginRight: 10}} source={require('../../assets/class.png')}/>
           <Text style={DefaultStyle.title}>Thông tin gia sư</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={{...DefaultStyle.profileButton, flexDirection: 'row', padding: 10, marginTop: 40}} onPress={() => navigation.navigate('Tutor assigned class')}>
+          <Image style={{marginRight: 10}} source={require('../../assets/subject.png')}/>
+          <Text style={DefaultStyle.title}>Lớp đã nhận</Text>
+        </TouchableOpacity>
       </View>
       <View style={{position: 'absolute', bottom: 40, alignSelf: 'center', width: '80%'}}>
         <CustomButton action={handleLogout} title="Đăng xuất" />

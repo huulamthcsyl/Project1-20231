@@ -13,8 +13,8 @@ export default function ForgotPasswordScreen() {
   const toast = useToast();
 
   const handleSend = () => {
-    //sendPasswordResetEmail(auth, email);
-    toast.show("Email đã được gửi đi", { type: 'success', placement: 'bottom' });
+    sendPasswordResetEmail(auth, email);
+    toast.show("Email đã được gửi đi");
   }
 
   return (

@@ -6,7 +6,6 @@ import { collection, getDocs, query, where } from 'firebase/firestore'
 import TutorClassCard from '../components/TutorClassCard'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import RNPickerSelect from 'react-native-picker-select';
-import CustomButton from '../components/CustomButton'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
