@@ -108,7 +108,8 @@ export default function CreateClassScreen({ route, navigation }) {
       setClassId(classData.classId);
       setIsEditing(true);
       setTutorList(classData.tutorList);
-      setAssignedTutor(classData.assignedTutor)
+      setAssignedTutor(classData.assignedTutor);
+      setIsEditing(true);
     } else setClassId(makeid(6));
     setParentId(auth.currentUser.uid);
   }, [])
@@ -150,7 +151,7 @@ export default function CreateClassScreen({ route, navigation }) {
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <CustomButton title="Xác nhận" action={handleSubmit}/>
-            {classTitle ? <CustomButton title="Xoá" action={handleDelete} color='red'/> : null}
+            {isEditing && <CustomButton title="Xoá" action={handleDelete} color='red'/>}
           </View>
         </View>
       </KeyboardAwareScrollView>

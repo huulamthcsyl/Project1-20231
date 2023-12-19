@@ -8,6 +8,7 @@ import { RadioGroup } from 'react-native-radio-buttons-group'
 import CustomButton from '../components/CustomButton'
 import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig'
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
+import { useToast } from 'react-native-toast-notifications'
 
 export default function TutorProfileViewScreen({ navigation, route }) {
 
@@ -16,6 +17,7 @@ export default function TutorProfileViewScreen({ navigation, route }) {
   const [tutorInfo, setTutorInfo] = useState();
   const [classInfo, setClassInfo] = useState();
   const { tutorId, classId } = route.params; 
+  const toast = useToast();
 
   const handleSubmit = () => {
     Alert.alert("Xác nhận", `Bạn có chắn chắn muốn nhận gia sư ${tutorInfo.name} không?`, 
