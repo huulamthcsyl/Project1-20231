@@ -16,6 +16,8 @@ import TutorAssignedClassScreen from './pages/tutor/TutorAssignedClassScreen';
 import TutorOwnClassScreen from './pages/tutor/TutorOwnClassScreen';
 import ParentInfoScreen from './pages/parent/ParentInfoScreen';
 import ParentProfileViewScreen from './pages/tutor/ParentProfileViewScreen';
+import AccountProfileScreen from './pages/AccountProfileScreen';
+import ChangePasswordScreen from './pages/ChangePasswordScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +42,8 @@ export default function App() {
             <Stack.Screen name='Parent profile view' component={ParentProfileViewScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Tutor assigned class' component={TutorAssignedClassScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Tutor own class' component={TutorOwnClassScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Account profile' component={AccountProfileScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Change password' component={ChangePasswordScreen} options={{ headerShown: false }} />
           </Stack.Navigator>
         </NavigationContainer>
       </ToastProvider>

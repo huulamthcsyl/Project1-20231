@@ -20,7 +20,7 @@ export default function ParentProfileScreen({ navigation }) {
         <Text style={DefaultStyle.titleHeader}>Hồ sơ phụ huynh</Text>
       </View>
       <View style={{alignItems: "center"}}>
-        <TouchableOpacity style={{...DefaultStyle.profileButton, flexDirection: 'row', padding: 10, marginTop: 40}}>
+        <TouchableOpacity style={{...DefaultStyle.profileButton, flexDirection: 'row', padding: 10, marginTop: 40}} onPress={() => navigation.navigate("Account profile")}>
           <Image style={{marginRight: 10}} source={require('../../assets/profile.png')}/>
           <Text style={DefaultStyle.title}>Thông tin tài khoản</Text>
         </TouchableOpacity>
