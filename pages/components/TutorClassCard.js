@@ -3,6 +3,9 @@ import React from 'react'
 import { DefaultStyle } from '../style'
 
 export default function ParentClassCard({classData, handlePress}) {
+
+  
+
   return (
     <TouchableOpacity style={DefaultStyle.card} onPress={handlePress}>
       <Text style={{...DefaultStyle.classTitle, fontSize: 24, marginBottom: 10}}>{classData.classTitle}</Text>
@@ -22,6 +25,12 @@ export default function ParentClassCard({classData, handlePress}) {
         <Image style={{marginRight: 10}} source={require('../../assets/address.png')} />
         <Text style={{...DefaultStyle.secondaryText, margin: 0, fontSize: 18}}>{classData.location}</Text>
       </View>
+      { classData.type ?
+        <View style={{flexDirection: 'row', paddingRight: 40}}>
+          <Image style={{marginRight: 10}} source={require('../../assets/status.png')} />
+          <Text style={{...DefaultStyle.secondaryText, margin: 0, fontSize: 18, color: classData.color}}>{classData.type}</Text>
+        </View> : null
+      }
     </TouchableOpacity>
   )
 }

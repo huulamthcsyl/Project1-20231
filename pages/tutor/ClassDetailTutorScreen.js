@@ -11,6 +11,30 @@ export default function ClassDetailTutorScreen({ route, navigation }) {
     const [classData, setClassData] = useState(null);
     const db = FIREBASE_DB;
     const auth = FIREBASE_AUTH;
+
+    function ProfileInfoCard({ navigation, parentId }) {
+      const [tutorInfo, setTutorInfo] = useState();
+    
+      useEffect(() => {
+        getDoc(doc(db, "users", parentId))
+        .then(res => setTutorInfo(res.data()))
+        .catch(err => console.log(err));
+      }, []);
+    
+    
+      return (
+        tutorInfo ? 
+        <TouchableOpacity style={{borderWidth: 1, borderRadius: 5, flexDirection: 'row', padding: 10, display: 'flex', marginBottom: 10}} 
+        onPress={() => navigation.navigate("Parent profile view", { parentId: parentId })}>
+          <Image style={{marginRight: 20}} source={require('../../assets/profile.png')} />
+          <Text style={DefaultStyle.text}>{tutorInfo.name}</Text>
+          <View style={{flex: 1, marginRight: 10, flexDirection: 'row-reverse', gap: 10, paddingTop: 3}}>
+            <Image source={require("../../assets/info.png")} />
+          </View>
+        </TouchableOpacity> 
+        : null
+      )
+    }
   
     async function getClassInfo(){
       try {
@@ -62,17 +86,30 @@ export default function ClassDetailTutorScreen({ route, navigation }) {
               <Text style={DefaultStyle.title}>Địa điểm: </Text>
               <Text style={{fontSize: 20, fontWeight: '400'}}>{classData.location}</Text>
             </View>
-            <View style={{marginBottom: 40}}>
+            <View style={{marginBottom: 20}}>
               <Text style={DefaultStyle.title}>Yêu cầu: </Text>
               <Text style={{fontSize: 20, fontWeight: '400'}}>{classData.requirement}</Text>
             </View>
             {
                 classData.tutorList.includes(auth.currentUser.uid) ? 
                 <View style={{height: 60}}>
-                  <CustomButton title="Đã đăng ký nhận lớp" isDisable={true}/> 
-                </View> :
+                  <CustomButton title="Đã đăng ký" isDisable={true}/> 
+                </View> : 
+                classData.pendingList.includes(auth.currentUser.uid) ? 
+                <View style={{height: 60}}>
+                  <CustomButton title="Đang xét duyệt" isDisable={true} />
+                </View> : 
+                classData.rejectedList.includes(auth.currentUser.uid) ? 
+                <View style={{height: 60}}>
+                  <CustomButton title="Đã từ chối" isDisable={true} />
+                </View> : 
+                !classData.status ? 
                 <View style={{height: 60}}>
                   <CustomButton title="Đăng ký nhận lớp" action={handleSubmit} />
+                </View> :
+                <View>
+                  <Text style={DefaultStyle.title}>Thông tin phụ huynh: </Text>
+                  <ProfileInfoCard navigation={navigation} parentId={classData.parentId} />
                 </View>
             }
           </View> 

@@ -23,6 +23,8 @@ export default function CreateClassScreen({ route, navigation }) {
   const [isEditing, setIsEditing] = useState(false);
   const [tutorList, setTutorList] = useState([]);
   const [assignedTutor, setAssignedTutor] = useState(null);
+  const [pendingList, setPendingList] = useState([]);
+  const [rejectedList, setRejectedList] = useState([]);
   const db = FIREBASE_DB;
   const auth = FIREBASE_AUTH;
   const toast = useToast();
@@ -59,7 +61,10 @@ export default function CreateClassScreen({ route, navigation }) {
       parentId: parentId,
       status: status,
       tutorList: tutorList,
-      assignedTutor: assignedTutor
+      assignedTutor: assignedTutor,
+      pendingList: pendingList,
+      rejectedList: rejectedList,
+      parentId: auth.currentUser.uid
     }
     try{
       setDoc(doc(db, "classes", classId), newClass);
@@ -110,6 +115,8 @@ export default function CreateClassScreen({ route, navigation }) {
       setTutorList(classData.tutorList);
       setAssignedTutor(classData.assignedTutor);
       setIsEditing(true);
+      setPendingList(pendingList);
+      setRejectedList(rejectedList);
     } else setClassId(makeid(6));
     setParentId(auth.currentUser.uid);
   }, [])

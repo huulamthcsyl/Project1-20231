@@ -13,6 +13,9 @@ import TutorInfoScreen from './pages/tutor/TutorInfoScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import TutorProfileViewScreen from './pages/parent/TutorProfileViewScreen';
 import TutorAssignedClassScreen from './pages/tutor/TutorAssignedClassScreen';
+import TutorOwnClassScreen from './pages/tutor/TutorOwnClassScreen';
+import ParentInfoScreen from './pages/parent/ParentInfoScreen';
+import ParentProfileViewScreen from './pages/tutor/ParentProfileViewScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,8 +35,11 @@ export default function App() {
             <Stack.Screen name='Class detail parent' component={ClassDetailParentScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Class detail tutor' component={ClassDetailTutorScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Tutor info' component={TutorInfoScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Parent info' component={ParentInfoScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Tutor profile view' component={TutorProfileViewScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Parent profile view' component={ParentProfileViewScreen} options={{ headerShown: false }} />
             <Stack.Screen name='Tutor assigned class' component={TutorAssignedClassScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Tutor own class' component={TutorOwnClassScreen} options={{ headerShown: false }} />
           </Stack.Navigator>
         </NavigationContainer>
       </ToastProvider>

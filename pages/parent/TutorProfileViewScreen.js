@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Alert, Button } from 'react-native'
 import React, { useState, useEffect, useMemo } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { DefaultStyle } from '../style'
@@ -16,7 +16,7 @@ export default function TutorProfileViewScreen({ navigation, route }) {
   const db = FIREBASE_DB;
   const [tutorInfo, setTutorInfo] = useState();
   const [classInfo, setClassInfo] = useState();
-  const { tutorId, classId } = route.params; 
+  const { tutorId, classId, status } = route.params; 
   const toast = useToast();
 
   const handleSubmit = () => {
@@ -25,9 +25,59 @@ export default function TutorProfileViewScreen({ navigation, route }) {
       {
         text: "Xác nhận",
         onPress: () => {
-          updateDoc(doc(db, "classes", classId), {assignedTutor: tutorId, tutorList: [], status: true})
+          updateDoc(doc(db, "classes", classId), {assignedTutor: tutorId, tutorList: [], pendingList: [], rejectedList: [], status: true})
           .then(res => {
             toast.show("Giao lớp thành công!", { type: 'success', placement: 'bottom' });
+            navigation.goBack();
+          })
+          .catch(err => console.log(err));
+        }
+      },
+      {
+        text: "Huỷ bỏ",
+        onPress: () => {
+          
+        }
+      }
+    ]);
+  }
+
+  const handleReject = () => {
+    Alert.alert("Xác nhận", `Bạn có chắn chắn từ chối gia sư ${tutorInfo.name} không?`, 
+    [
+      {
+        text: "Xác nhận",
+        onPress: () => {
+          let newTutorList = classInfo.tutorList.filter(tutor => tutor != tutorId);
+          let newRejectedList = [...classInfo.rejectedList, tutorId]
+          updateDoc(doc(db, "classes", classId), {tutorList: newTutorList, rejectedList: newRejectedList})
+          .then(res => {
+            navigation.goBack();
+          })
+          .catch(err => console.log(err));
+        }
+      },
+      {
+        text: "Huỷ bỏ",
+        onPress: () => {
+          
+        }
+      }
+    ]);
+  }
+
+  const handlePending = () => {
+    Alert.alert("Xác nhận", `Bạn có chắn chắn đưa gia sư ${tutorInfo.name} vào danh sách xét duyệt không?`, 
+    [
+      {
+        text: "Xác nhận",
+        onPress: () => {
+          let newTutorList = classInfo.tutorList.filter(tutor => tutor != tutorId);
+          let newPendingList = [...classInfo.pendingList, tutorId]
+          console.log(newTutorList)
+          console.log(newPendingList)
+          updateDoc(doc(db, "classes", classId), {tutorList: newTutorList, pendingList: newPendingList})
+          .then(res => {
             navigation.goBack();
           })
           .catch(err => console.log(err));
@@ -91,7 +141,21 @@ export default function TutorProfileViewScreen({ navigation, route }) {
             <Text style={{...DefaultStyle.title, marginBottom: 10, marginRight: 10}}>Giới thiệu bản thân</Text>
             <Text style={DefaultStyle.text}>{tutorInfo.description}</Text>
           </View>
-          {classInfo && !classInfo.status && <CustomButton title="Nhận gia sư" action={handleSubmit}/>}
+          {classInfo && !classInfo.status && 
+            <View style={{flexDirection: 'row', columnGap: 15}}>
+              <TouchableOpacity onPress={handleReject} style={{backgroundColor: 'red', flex: 1, alignItems: 'center', borderRadius: 5, padding: 5}}>
+                <Text style={{fontSize: 20, color: '#fff'}}>Từ chối gia sư</Text>
+              </TouchableOpacity>
+              {status == "available" ? 
+                <TouchableOpacity onPress={handlePending} style={{backgroundColor: 'blue', flex: 1, alignItems: 'center', borderRadius: 5, padding: 5}}>
+                  <Text style={{fontSize: 20, color: '#fff'}}>Xét duyệt gia sư</Text>
+                </TouchableOpacity> : 
+                <TouchableOpacity onPress={handleSubmit} style={{backgroundColor: 'green', flex: 1, alignItems: 'center', borderRadius: 5, padding: 5}}>
+                  <Text style={{fontSize: 20, color: '#fff'}}>Nhận gia sư</Text>
+                </TouchableOpacity>
+              }
+            </View>
+          }
         </View>
       </KeyboardAwareScrollView>
       : null

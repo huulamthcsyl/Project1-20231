@@ -6,34 +6,60 @@ import { FIREBASE_AUTH, FIREBASE_DB } from '../../firebaseConfig';
 import { getDocs, where, query, collection } from 'firebase/firestore';
 import TutorClassCard from '../components/TutorClassCard'
 
-export default function TutorAssignedClassScreen() {
+export default function TutorAssignedClassScreen({ navigation }) {
 
-  const [classes, setClasses] = useState([]);
+  const [availableList, setAvailableList] = useState([]);
+  const [pendingList, setPendingList] = useState([]);
+  const [rejectedList, setRejectedList] = useState([]);
+  const [assignedList, setAssignedList] = useState([]);
   const db = FIREBASE_DB;
   const auth = FIREBASE_AUTH;
 
-  useEffect(() => {
-    const q = query(collection(db, "classes"), where("assignedTutor", "==", auth.currentUser.uid));
+  function queryClass(type, setData){
+    let q;
+    if(type == "assignedTutor"){
+      q = query(collection(db, "classes"), where(type, "==", auth.currentUser.uid));
+    } else {
+      q = query(collection(db, "classes"), where(type, "array-contains", auth.currentUser.uid));
+    }
     let classList = [];
     getDocs(q)
     .then(res => {
-      res.forEach((doc) => classList.push(doc.data()));
-      setClasses(classList);
+      res.forEach((doc) => {
+        let data = doc.data();
+        if(type == "tutorList"){
+          data.type = "Đã đăng ký";
+          data.color = "green";
+        } else if(type == "assignedTutor") {
+          data.type = "Đã nhận";
+          data.color = "#4834D4";
+        } else if(type == "pendingList") {
+          data.type = "Đang xét duyệt";
+          data.color = "blue";
+        } else if(type == "rejectedList") {
+          data.type = "Đã từ chối";
+          data.color = "red";
+        }
+        classList.push(data);
+      })
+      setData(classList);
     })
     .catch(err => console.log(err));
+  }
+
+  useEffect(() => {
+    queryClass("assignedTutor", setAssignedList);
+    queryClass("tutorList", setAvailableList);
+    queryClass("pendingList", setPendingList);
+    queryClass("rejectedList", setRejectedList);
   }, []);
 
   return (
     <SafeAreaView style={DefaultStyle.container} edges={['top']}>
       <View style={DefaultStyle.header}>
-        <Text style={DefaultStyle.titleHeader}>Danh sách lớp đã nhận</Text>
+        <Text style={DefaultStyle.titleHeader}>Lớp đã đăng ký</Text>
       </View>
-      {classes &&
-        <FlatList style={{ padding: 20, marginBottom: 5 }} data={classes} renderItem={(data) => <TutorClassCard classData={data.item} />} />
-      }
-      <TouchableOpacity style={DefaultStyle.floatingButton} onPress={() => navigation.navigate("Tutor class filter")}>
-        <Image style={DefaultStyle.floatingIcon} source={require('../../assets/filter.png')} />
-      </TouchableOpacity>
+      <FlatList style={{ padding: 20, marginBottom: 5 }} data={[...availableList, ...pendingList, ...rejectedList, ...assignedList]} renderItem={(data) => <TutorClassCard classData={data.item} handlePress={() => navigation.navigate("Class detail tutor", { classId: data.item.classId })}/>} />
     </SafeAreaView>
   )
 }

@@ -7,7 +7,7 @@ import { getDoc, doc } from 'firebase/firestore';
 
 const db = FIREBASE_DB;
 
-function ProfileInfoCard({ navigation, tutorId, classId }) {
+function ProfileInfoCard({ navigation, tutorId, classId, status }) {
   const [tutorInfo, setTutorInfo] = useState();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function ProfileInfoCard({ navigation, tutorId, classId }) {
   return (
     tutorInfo ? 
     <TouchableOpacity style={{borderWidth: 1, borderRadius: 5, flexDirection: 'row', padding: 10, display: 'flex', marginBottom: 10}} 
-    onPress={() => navigation.navigate("Tutor profile view", { tutorId: tutorId, classId: classId })}>
+    onPress={() => navigation.navigate("Tutor profile view", { tutorId: tutorId, classId: classId, status: status })}>
       <Image style={{marginRight: 20}} source={require('../../assets/profile.png')} />
       <Text style={DefaultStyle.text}>{tutorInfo.name}</Text>
       <View style={{flex: 1, marginRight: 10, flexDirection: 'row-reverse', gap: 10, paddingTop: 3}}>
@@ -107,8 +107,14 @@ export default function ClassDetailParentScreen({ route, navigation }) {
               <ProfileInfoCard tutorId={classData.assignedTutor} navigation={navigation} classId={classId}/>
             </View> : 
             <View>
-              <Text style={DefaultStyle.title}>Gia sư ứng tuyển: </Text>
-              <FlatList data={classData.tutorList} renderItem={(data) => <ProfileInfoCard tutorId={data.item} navigation={navigation} classId={classId}/>}/>
+              <View style={{marginBottom: 5}}>
+                <Text style={DefaultStyle.title}>Gia sư ứng tuyển: </Text>
+                <FlatList data={classData.tutorList} renderItem={(data) => <ProfileInfoCard tutorId={data.item} navigation={navigation} classId={classId} status="available"/>}/>
+              </View>
+              <View style={{marginBottom: 5}}>
+                <Text style={DefaultStyle.title}>Gia sư đang xét duyệt: </Text>
+                <FlatList data={classData.pendingList} renderItem={(data) => <ProfileInfoCard tutorId={data.item} navigation={navigation} classId={classId} status="pending"/>}/>
+              </View>
             </View>
           }
         </View> 
