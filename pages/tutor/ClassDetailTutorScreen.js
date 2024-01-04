@@ -107,10 +107,11 @@ export default function ClassDetailTutorScreen({ route, navigation }) {
                 <View style={{height: 60}}>
                   <CustomButton title="Đăng ký nhận lớp" action={handleSubmit} />
                 </View> :
+                classData.assignedTutor == auth.currentUser.uid ?
                 <View>
                   <Text style={DefaultStyle.title}>Thông tin phụ huynh: </Text>
                   <ProfileInfoCard navigation={navigation} parentId={classData.parentId} />
-                </View>
+                </View> : null
             }
           </View> 
           : null
